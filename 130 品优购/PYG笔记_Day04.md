@@ -31,6 +31,7 @@ Spring Security
 视频时长: 04:35
 ```
 **小节内容**
+
 ```
    Spring Security是一个能够为基于Spring的企业应用系统提供声明式的安全访问控制解决方案的安全框架。它提供了一组可以在Spring应用上下文中配置的Bean，充分利用了Spring IoC，DI（控制反转Inversion of Control ,DI:Dependency Injection 依赖注入）和AOP（面向切面编程）功能，为应用系统提供声明式的安全访问控制功能，减少了为企业系统安全控制编写大量重复代码的工作。
 ```
@@ -45,54 +46,17 @@ Spring Security
 视频时长: 23:18
 ```
 **小节内容**
-```xml
-web.xml 核心配置
-	<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">	
 
-  	 <context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-security.xml</param-value>
-	 </context-param>
-	 <listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	 </listener>
-	
-	 <filter>  
-		<filter-name>springSecurityFilterChain</filter-name>  
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
-	 </filter>  
-	 <filter-mapping>  
-		<filter-name>springSecurityFilterChain</filter-name>  
-		<url-pattern>/*</url-pattern>  
-	 </filter-mapping>
-	
-</web-app>
-```
+![](img/1545294459229.png)
+
 **spring-security.xml**
-```xml
-<http use-expressions="false" >
-		<!-- 当前用户必须有ROLE_USER的角色 才可以访问根目录及所属子目录的资源 -->
-		<intercept-url pattern="/**" access="ROLE_USER"/>
-		<!-- 开启表单登陆功能 -->
-		<form-login   login-page="/login.html"
-					  default-target-url="/index.html"
-					  authentication-failure-url="/login_error.html"
-		/>
 
-		<csrf disabled="true"/>
-	</http>
-```
+![](img/Snipaste_2019-01-19_21-32-10.png)
+
 说明
 
 ```
 use-expressions="false" 是否启用SPEL 表达式
-
 pattern="/**" : 
 	/* 表示拦截跟目录
 	/** 连接根目录及其自目录
@@ -109,15 +73,17 @@ pattern="/**" :
 视频时长: 14:39
 ```
 **小节内容**
-```xml
 
-```
-**补充**
-```
+![](img/Snipaste_2019-01-19_21-43-35.png)
 
-```
+
+
+注意: 此处的action要和配置文件中的一致
+
 ### 1.3.5 .运营商系统-登陆
+
 **视频信息**
+
 ```
 视频名称: 05.运营商系统-登陆
 视频时长: 19:18
@@ -131,7 +97,8 @@ pattern="/**" :
 ```
 **xml**
 ```xml
-<http pattern="/*.html" security="none"></http>
+<!-- 设置不拦截的页面   -->
+   <http pattern="/*.html" security="none"></http>
 	<http pattern="/css/**" security="none"></http>
 	<http pattern="/img/**" security="none"></http>
 	<http pattern="/js/**" security="none"></http>
@@ -155,7 +122,7 @@ pattern="/**" :
 ```
 说明
 
-```
+```xml
 1)always-use-default-target：
 	指定了是否在身份验证通过后总是跳转到default-target-url属性指定的URL。
 	如果不配置,则跳转到登陆之前的页面
@@ -167,8 +134,18 @@ pattern="/**" :
 </headers>
 4) document:loginform.submit()
 	document: 声明是一段dom代码  
-		loginform.submit() : 这个是dom 源声的东西 格式"id.方法名" 可以直接调用
+		loginform.submit() : 这个是dom 源声的东西 格式"form表单Id.方法名" 可以直接调用
 ```
+
+思考:
+
+​	那些页面不需要拦截
+
+![](img/Snipaste_2019-01-19_22-01-17.png)
+
+
+
+
 
 ### 1.3.6 .运营商系统-显示登陆名
 
@@ -178,20 +155,9 @@ pattern="/**" :
 视频时长: 10:34
 ```
 **小节内容**
-```java
-1) 服务器端代码
-	@RequestMapping("/name")
-	public Map name(){
-		String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		Map map=new HashMap<>();
-		map.put("loginName", name);
-		return map;		
-	}
-```
-注意
-```
-此处我们使用的是html 页面上不能再使用标签获得用户名了
-```
+
+![](img/1545294752796.png)
+
 ### 1.3.7 .运营商系统-退出登录
 **视频信息**
 ```
@@ -225,11 +191,13 @@ pattern="/**" :
 准备前端js 代码
 ```
 **补充**
+
 ```
 
 ```
 ### 1.3.10 .商家申请入驻-代码实现
 **视频信息**
+
 ```
 视频名称: 10.商家申请入驻-代码实现
 视频时长: 12:39
@@ -253,7 +221,10 @@ pattern="/**" :
 查询所有未审核的代码
 ```
 
+![](img/1545286484607.png)
+
 ### 1.3.12 .商家审核-商家详情
+
 **视频信息**
 ```
 视频名称: 12.商家审核-商家详情
@@ -309,6 +280,7 @@ pattern="/**" :
 
 ### 1.3.15 .商家系统登陆-认证类调用服务方法
 **视频信息**
+
 ```
 视频名称: 15.商家系统登陆-认证类调用服务方法
 视频时长: 10:10
@@ -361,8 +333,6 @@ dubbo:reference: 从注册中心要访问的服务
 			return new Result(false, "增加失败");
 		}
 	}
-	
-	
 ```
 xml 中声明加密器
 ```xml
@@ -377,3 +347,4 @@ xml 中声明加密器
 		
 ```
 
+![](img/1545295632802.png)
