@@ -342,15 +342,41 @@ java
 		for (String string : strings) {
 			System.out.println(string);
 		}
+
+
 ```
+```java
+// 模拟删除文件
+	public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
+		// 1)加载配置文件
+		ClientGlobal.init("D:\\develop\\IdeaWorkSpace\\pyg\\day-05\\fastDFSdemo\\src\\main\\resources\\fdfs_client.conf");
+
+		//2构建一个管理者客户端
+		TrackerClient trackerClient= new TrackerClient();
+		// 3管理者服务端 
+		TrackerServer trackerServer= trackerClient.getConnection();
+		// 4) 声明一个存储服务端
+		StorageServer storageServer = null;
+		StorageClient storageClient = new StorageClient(trackerServer,storageServer);
+		// 存储数据
+		int group1 = storageClient.delete_file("group1", "M00/00/00/wKgZhVwxr8uAK0wAAAPB4mpVZW4984.jpg");
+		//0:文件删除成功，2：文件不存在 ，22 路径错误  其它：文件删除出错；
+		trackerServer.close();
+		System.out.println(group1);
+	}
+```
+
+
+
 ### 1.3.17 .商品录入-图片上传-后端
+
 **视频信息**
 ```
 视频名称: 17.商品录入-图片上传-后端
 视频时长: 19:05
 ```
 **小节内容**
-```
+```xml
 1) 上传功能放置到comm 层 方便代码的重用
 2) 将“资源/fastDFS/配置文件”文件夹中的 fdfs_client.conf 拷贝到pinyougou-shop-web工程config文件夹
 3) 在pinyougou-shop-web工程application.properties添加配置

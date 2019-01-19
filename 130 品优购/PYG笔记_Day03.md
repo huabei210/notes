@@ -56,7 +56,7 @@ app.service('brandService',function($http){
 使用Service
 
 ```js
-app.controller('brandController' ,function(brandService){
+app.controller('brandController' ,function($scope,brandService){
     $scope.findAll=function(){
 		brandService.findAll().success(
 			function(response){
@@ -158,6 +158,8 @@ app.controller('brandController' ,function($scope,$controller   ,brandService){
 代码生成器的本质
 	1)先将公共的代码抽取,将公共的部分定义成一个通用的字符串
 	2)循环遍历数据库表,将通用的字符串替换 	
+----------
+	会生成interface,service ,controller,前端额代码
 ```
 
 
@@ -172,7 +174,19 @@ app.controller('brandController' ,function($scope,$controller   ,brandService){
 tb_specification规格表 ---------1------------N--- tb_specification_option  规格选项表
 ```
 
+```
+{
+specification{specName:"电视屏幕尺寸"},
+specificationOptionList:[{optionName:"14存",orders:1},{optionName:"14存",orders:1},{optionName:"14存",orders:1}]
+};
+```
+
+
+
+
+
 ### 1.3.7 .规格管理-列表
+
 **视频信息**
 ```
 视频名称: 07.规格管理-列表
@@ -485,3 +499,16 @@ $scope.findOne=function(id){
 		return value;
 	}
 ```
+
+##  补充
+
+```
+服务器端代码
+	1) 前端要传递什么格式的数据
+	2) 如何处理
+	3) 如何响应
+前端代码
+	1) 服务器端需要什么
+	2) 如何处理
+```
+

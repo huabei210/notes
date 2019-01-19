@@ -91,7 +91,7 @@ web.xml 核心配置
 说明
 
 ```
-use-expressions="false" 师傅启用SPEL 表达式
+use-expressions="false" 是否启用SPEL 表达式
 
 pattern="/**" : 
 	/* 表示拦截跟目录
