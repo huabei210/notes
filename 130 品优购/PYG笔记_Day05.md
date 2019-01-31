@@ -123,7 +123,7 @@ this.findByParentId=function(parentId){
 ```
 ![](./img/day05_03.png)
 
-
+![](img/Snipaste_2019-01-22_21-40-25.png)
 
 ### 1.3.6 .商品分类-增删改实现思路
 **视频信息**
@@ -439,6 +439,12 @@ app.service("uploadService",function($http){
 ​	第一个"file" 对应的是controller 参数的名称
 ​	第二个file 对应的是 input id 属性
 
+![](img/Snipaste_2019-01-22_16-31-12.png)
+
+
+
+
+
 ### 1.3.19 .商品录入-图片列表
 
 **视频信息**
@@ -462,7 +468,7 @@ app.service("uploadService",function($http){
 ```
 **小节内容**
 ```
-删除功能只是从前端删除,可以增加从服务器删除,从fastFDFS 删除
+删除功能只是从前端删除,可以增加从服务fastFDFS 删除
 
 ```
 **补充**

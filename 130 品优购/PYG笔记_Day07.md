@@ -2,11 +2,11 @@
 # 第1节课
 ## 1.1 今日知识点
 ```
-
-```
-## 1.2 今日目标
-```
-
+1)angularJS页面跳转  url#?id=123
+----
+2)angularJS 两个新功能
+ $location.serach()['id'] 
+ ng-checked// true 表示选中,false 表示不选中
 ```
 ## 1.3课程内容
 ### 1.3.1 .今日目标
@@ -38,9 +38,29 @@
 ```
 **补充**
 ```
-
+获取用户登陆信息
+User user 
+= (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());// 密码获取不到 null
+		System.out.println(user.getAuthorities());
 ```
+```
+SELECT goods_Name ,audit_status,
+CASE audit_status 
+	WHEN  1 THEN '已通过'
+	WHEN  0 THEN '未通过'
+	ELSE '未审核'
+END 
+ FROM  tb_goods a
+```
+
+
+
+
+
 ### 1.3.3 .商品列表-显示状态
+
 **视频信息**
 ```
 视频名称: 03.商品列表-显示状态
@@ -59,7 +79,10 @@ $scope.status=['未审核','已审核','审核未通过','关闭'];//商品状�
 注意:
 	如果后续有一条数据状态是 'a' 则该处代码将会由问题, 需要用 ng-if  重写
 ```
+![](img/Snipaste_2019-01-23_22-42-21.png)
+
 ### 1.3.4 .商品列表-显示分类
+
 **视频信息**
 ```
 视频名称: 04.商品列表-显示分类
@@ -76,10 +99,12 @@ $scope.status=['未审核','已审核','审核未通过','关闭'];//商品状�
 	定义一个数据 让下角标和 数据库数据对应	
 ```
 
+![](img/Snipaste_2019-01-23_23-48-15.png)
 
 ### 1.3.5 .商品列表-条件查询
 
 **视频信息**
+
 ```
 视频名称: 05.商品列表-条件查询
 视频时长: 03:52
@@ -112,15 +137,12 @@ $scope.status=['未审核','已审核','审核未通过','关闭'];//商品状�
 视频时长: 01:36
 ```
 **小节内容**
-```
 
-```
-**补充**
-```
+![](img/day07_流程图.png)
 
-```
 ### 1.3.8 .商品修改-读取商品图片
 **视频信息**
+
 ```
 视频名称: 08.商品修改-读取商品图片
 视频时长: 02:33
@@ -150,7 +172,7 @@ $scope.status=['未审核','已审核','审核未通过','关闭'];//商品状�
 ```
 **小节内容**
 ```
-ng-checked : 方法返回值为true 则选中
+ng-checked="" : 方法返回值为true 则选中
 ```
 ![](img/Snipaste_2019-01-19_23-10-15.png)
 
@@ -224,7 +246,7 @@ ng-checked : 方法返回值为true 则选中
 视频名称: 17.运营商后台-商品删除
 视频时长: 07:47
 ```
-**小节内容
+**小节内容**
 
 ### 1.3.18 .商家后台-上下架-思路分析
 **视频信息**
@@ -240,3 +262,18 @@ ng-checked : 方法返回值为true 则选中
 视频名称: 19.注解式事务
 视频时长: 07:49
 ```
+
+```
+ <!---->
+    <tx:advice transaction-manager="transactionManager" id="txAdvicer">
+        <tx:attributes>
+            <tx:method name="*" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+    
+      <aop:config>
+          <aop:advisor advice-ref="txAdvicer" pointcut="execution(* com.pinyougou.sellergoods.service.impl.*.*(..))"/>
+      </aop:config>
+```
+
