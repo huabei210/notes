@@ -76,10 +76,6 @@ HighlightOptions highlightOptions=new HighlightOptions().addField("item_title");
 业务规则这里我们参考了京东的搜索页的业务逻辑
 
 ```
-**补充**
-```
-
-```
 ### 1.3.5 .实现思路与代码结构优化
 **视频信息**
 ```
@@ -101,13 +97,9 @@ HighlightOptions highlightOptions=new HighlightOptions().addField("item_title");
 视频时长: 17:25
 ```
 **小节内容**
-```
 
-```
 **补充**
-```
 
-```
 ### 1.3.7 .商品分类列表-前端
 **视频信息**
 ```
@@ -323,11 +315,7 @@ delete 操作符用于删除对象的某个属性；如果没有指向这个属�
 视频名称: 问题答疑
 视频时长: 06:26
 ```
-**小节内容**
-```
+![](img/Snipaste_2019-01-31_09-26-10.png)
 
-```
-**补充**
-```
 
-```
+
