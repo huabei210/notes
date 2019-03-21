@@ -2,13 +2,14 @@
 # 第1节课
 ## 1.1 今日知识点
 ```
+ springDataSolr
+  1)高亮显示
+  2)分组查询
  angularJs
   1) 过滤器
   2) $sce 服务
   3) ng-bind-html="item.title | trustHtml" 调用过滤器
-springDataSolr
-  1)高亮显示
-  2)分组查询
+
 
 ```
 ## 1.2 今日目标
@@ -247,7 +248,13 @@ delete 操作符用于删除对象的某个属性；如果没有指向这个属�
 ```
 **小节内容**
 ```
-
+delete 移除js 中的对象
+注意:
+	var i=0 ;
+	delete i ; 可以移除
+	但是如果一个变量没有使用var 
+	i=0;
+	则无法移除,delete 失效
 ```
 **补充**
 ```
